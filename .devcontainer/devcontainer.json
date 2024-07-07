@@ -1,0 +1,30 @@
+{
+	"name": "PostgreSQL World Database",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash"
+			},
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"ms-vscode-remote.remote-containers",
+				"mtxr.sqltools",
+				"mtxr.sqltools-driver-pg"
+			]
+		}
+	},
+	"forwardPorts": [5432, 3000, 8080],
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/pnpm:2": {}
+	},
+	"remoteEnv": {
+		"POSTGRES_USER": "${localEnv:POSTGRES_USER}",
+		"POSTGRES_PASSWORD": "${localEnv:POSTGRES_PASSWORD}",
+		"POSTGRES_DB": "${localEnv:POSTGRES_DB}",
+		"DB_ANON_ROLE": "${localEnv:DB_ANON_ROLE}",
+		"DB_SCHEMA": "${localEnv:DB_SCHEMA}"
+	}
+}
